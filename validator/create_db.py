@@ -9,6 +9,19 @@ class Person(Base):
     __tablename__ = 'person'
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
+    spec = Column(String(250), nullable=False)
+    """
+    spec is going to be a bit overloaded.
+    Tnk = War
+    Ret = Pal
+    Frl = Dru
+    Mag
+    Wlk
+    Hnt
+    Pri
+    Rog
+    All
+    """
  
 class Item(Base):
     __tablename__ = 'item'

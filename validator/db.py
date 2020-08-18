@@ -22,6 +22,6 @@ class SolutionLootDB():
 
 if __name__ == '__main__':
     db = SolutionLootDB()
-    db.session.add(Person(name='Charurun'))
-    db.session.add(Person(name='Tenju'))
+    db.session.add(Person(name='Charurun', spec="Tnk"))
+    db.session.add(Person(name='Tenju', spec="Hnt"))
     db.session.commit()
