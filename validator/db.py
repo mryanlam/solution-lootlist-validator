@@ -16,3 +16,9 @@ class SolutionLootDB():
     
     def list_person(self) -> List[str]:
         return[ x.name for x in self.session.query(Person).all() ]
+
+if __name__ == '__main__':
+    db = SolutionLootDB()
+    db.session.add(Person(name='Charurun'))
+    db.session.add(Person(name='Tenju'))
+    self.session.commit()
