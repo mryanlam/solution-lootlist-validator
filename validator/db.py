@@ -21,4 +21,4 @@ if __name__ == '__main__':
     db = SolutionLootDB()
     db.session.add(Person(name='Charurun'))
     db.session.add(Person(name='Tenju'))
-    self.session.commit()
+    db.session.commit()
