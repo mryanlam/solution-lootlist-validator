@@ -6,7 +6,7 @@
 <ul class="list-group">
 {% for item in lootlist %}
     {% for key in item %}
-    <li class="list-group-item">{{ key }} {{ dictionary[key] }}</li>
+    <li class="list-group-item">{{ key }} {{ item[key] }}</li>
     {% endfor %}
 {% endfor %}
 </ul>
