@@ -1,6 +1,7 @@
 from typing import Dict
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import pprint
 from itertools import zip_longest
 
 def validate_sheet(uri: str) -> Dict[str, str]:
@@ -8,10 +9,18 @@ def validate_sheet(uri: str) -> Dict[str, str]:
     creds = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
     client = gspread.authorize(creds)
     sheet = client.open_by_url(uri).sheet1
-    col_1 = sheet.get("B6:B55")
-    col_2 = sheet.get("C6:C55")
+    col_1 = sheet.get("B6:C55")
+    # col_2 = sheet.get("C6:C55")
     val = 50
-    for left, right in (zip_longest(col_1, col_2)):
+    for row in col_1:
+        try:
+            left = row[0]
+        except IndexError:
+            left = None
+        try:
+            right = row[1]
+        except IndexError:
+            right = None
         print("{} {} {}".format(val, left, right))
         val -= 1
 
