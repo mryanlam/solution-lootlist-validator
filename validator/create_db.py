@@ -20,6 +20,7 @@ class Item(Base):
 
 class ItemList(Base):
     __tablename__ = 'itemlist'
+    id = Column(Integer, primary_key=True)
     person = Column(Integer, ForeignKey('person.id'))
     item = Column(Integer, ForeignKey('item.id'))
     value = Column(Integer)
