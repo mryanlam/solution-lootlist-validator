@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from create_db import Person, Item, ItemList
+from create_db import Base, Person, Item, ItemList
 from typing import Dict, List
 
 class SolutionLootDB():
