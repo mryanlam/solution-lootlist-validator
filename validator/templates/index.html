@@ -3,4 +3,9 @@
 {% block content %}
 <h1>Index</h1>
 <p>I am overriding the content block in base.html</p>
+<ul class="list-group">
+{% for person in people %}
+    <li class="list-group-item">{{ person }}</li>
+{% endfor %}
+</ul>
 {% endblock content %}
