@@ -13,5 +13,10 @@ def raider():
     raiders = db.list_person()
     return render_template('index.html', people=raiders)
 
+@app.route("/list/<raider>", methods=["GET"])
+def lootlist(raider: str):
+    lootlist = db.list_lootlist(raider)
+    return render_template('lootlist.html', lootlist=lootlist)
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
