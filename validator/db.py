@@ -17,7 +17,7 @@ class SolutionLootDB():
     def list_person(self) -> List[str]:
         return[ x.name for x in self.session.query(Person).all() ]
 
-    def list_lootlist(self, raider_name: str): -> List[Dict[int, str]]
+    def list_lootlist(self, raider_name: str):
         return [{50: "Test ITEM"}, {49: "TF BLESSED"}]
 
 if __name__ == '__main__':
