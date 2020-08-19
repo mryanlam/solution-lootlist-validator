@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, inspect
 from sqlalchemy.orm import sessionmaker
 from create_db import Base, Person, Item, ItemList
 from typing import Dict, List
@@ -23,9 +23,18 @@ class SolutionLootDB():
     def list_lootlist(self, raider_name: str):
         return [{50: "Test ITEM"}, {49: "TF BLESSED"}]
 
-    def get_item_by_name(self, item_name) -> Dict[str, str]:
-        return {id: 1, "item_name": "TF BLESSED", "item_type": "Melee", "designation": "Reserved", "allocation": 1}
+    def insert_items(self, item_list: List[Dict]):
+        for item in item_list:
+            self.session.add(item)
+        self.session.commit()
 
+    def get_item_by_name(self, item_name) -> Dict[str, str]:
+        query = self.session.query(Item).filter(Item.item_name==item_name).first()
+        return self.object_as_dict(query)
+
+    def object_as_dict(self, obj):
+        return {c.key: getattr(obj, c.key)
+            for c in inspect(obj).mapper.column_attrs}
 
 if __name__ == '__main__':
     db = SolutionLootDB()
