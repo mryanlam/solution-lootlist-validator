@@ -28,7 +28,7 @@ def _get_sheet(uri: str) -> Dict[int, Tuple]:
     sh = gc.open_by_url(uri).sheet1
     loot_list = sh.get("B6:C55")
     ret = dict()
-    val = 50
+    val = 51
     for row in loot_list:
         val -= 1
         try:
@@ -78,8 +78,6 @@ def _validate_bracket(loot_list: Dict[int, Tuple], bracket: List[int], db: Solut
             info.append("Number of {} in bracket {} exceeds the max {}".format(item_type, count, MAX_DUPLICATE_ITEM_TYPE))
     return (valid, info)
     
-
-
 
 
 if __name__ == '__main__':
