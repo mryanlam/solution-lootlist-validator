@@ -30,6 +30,9 @@ class Item(Base):
     item_type = Column(String(250))
     designation = Column(String(250), nullable=False)
     allocation = Column(Integer)
+    raid = Column(String(250))
+    first_prio = Column(String(250))
+    second_prio = Column(String(250))
 
 class ItemList(Base):
     __tablename__ = 'itemlist'
