@@ -54,8 +54,10 @@ def _validate_sheet(loot_list: Dict[int, Tuple]) -> Tuple[bool, Dict]:
         if not valid:
             overall_valid = False
             info_dict[str(bracket)] = info
+    # TODO Validate non bracketed items
     return (overall_valid, info_dict)
 
+# TODO Validate Class
 def _validate_bracket(loot_list: Dict[int, Tuple], bracket: List[int], db: SolutionLootDB) -> Tuple[bool, List[str]]:
     allocation_sum = 0
     type_count = dict()
