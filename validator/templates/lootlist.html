@@ -8,8 +8,11 @@
     <li class="list-group-item">{{ key }} {{ item[key] }}</li>
     {% endfor %}
 {% endfor %}
-{% if valid in defined %}
+{% if valid is defined %}
 <h1>Validity: {{ valid }}</h1>
+{% endif %}
+{% if fail is defined %}
+<h1>Error: {{ fail }}</h1>
 {% endif %}
 {% for bracket in error %}
     {% for line in error[bracket] %}

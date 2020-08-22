@@ -27,7 +27,7 @@ def validate_sheet():
         valid, err_msg_dict = (validate_sheet(c, uri))
         return render_template('lootlist.html', valid=valid, error=err_msg_dict)
     except Exception as e:
-        return render_template('lootlist.html', error=e)
+        return render_template('lootlist.html', fail=e)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
