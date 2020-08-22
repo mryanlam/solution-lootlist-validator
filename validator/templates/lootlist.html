@@ -1,19 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Index</h1>
-<p>I am overriding the content block in base.html</p>
+<h1>Lootlist Validator</h1>
 <ul class="list-group">
 {% for item in lootlist %}
     {% for key in item %}
     <li class="list-group-item">{{ key }} {{ item[key] }}</li>
     {% endfor %}
 {% endfor %}
-{% if 'valid' in data %}
-<h1>Validity: {{ data['valid'] }}</h1>
+{% if valid in defined %}
+<h1>Validity: {{ valid }}</h1>
 {% endif %}
-{% for bracket in err_msg_dict %}
-    {% for line in err_msg_dict[bracket] %}
+{% for bracket in error %}
+    {% for line in error[bracket] %}
 <div class="alert alert-danger" role="alert">
     {{ bracket }} : {{ line }}
   </div>
