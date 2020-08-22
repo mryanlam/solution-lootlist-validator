@@ -21,8 +21,8 @@ def lootlist(raider: str):
 
 @app.route("/validate",  methods=["GET", "POST"])
 def validate():
-    uri = request.args.get('uri')
-    c = request.args.get('class')
+    uri = request.form.get('uri')
+    c = request.form.get('class')
     try:
         valid, err_msg_dict = (validate_sheet(c, uri))
         return render_template('lootlist.html', valid=valid, error=err_msg_dict)
