@@ -9,5 +9,15 @@
     <li class="list-group-item">{{ key }} {{ item[key] }}</li>
     {% endfor %}
 {% endfor %}
+{% if 'valid' in data %}
+<h1>Validity: {{ data['valid'] }}</h1>
+{% endif %}
+{% for bracket in err_msg_dict %}
+    {% for line in err_msg_dict[bracket] %}
+<div class="alert alert-danger" role="alert">
+    {{ bracket }} : {{ line }}
+  </div>
 </ul>
+    {% endfor %}
+{% endfor %}
 {% endblock content %}

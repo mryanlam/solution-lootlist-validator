@@ -8,4 +8,32 @@
     <li class="list-group-item">{{ person }}</li>
 {% endfor %}
 </ul>
+<form action="/validate" method="post">
+    <label for="uri">Lootsheet URL</label><br>
+    <input type="text" id="uri" name="uri" value="lootlist url">
+    <label for="class">Class/spec</label><br>
+    <input type="radio" id="war" name="class" value="war">
+    <label for="war">war</label><br>
+    <input type="radio" id="tnk" name="class" value="tnk">
+    <label for="tnk">tnk</label><br>
+    <input type="radio" id="ret" name="class" value="ret">
+    <label for="ret">ret</label><br>
+    <input type="radio" id="pal" name="class" value="pal">
+    <label for="pal">pal</label><br>
+    <input type="radio" id="frl" name="class" value="frl">
+    <label for="frl">frl</label><br>
+    <input type="radio" id="dru" name="class" value="dru">
+    <label for="dru">dru</label><br>
+    <input type="radio" id="mag" name="class" value="mag">
+    <label for="mag">mag</label><br>
+    <input type="radio" id="wlk" name="class" value="wlk">
+    <label for="wlk">wlk</label><br>
+    <input type="radio" id="hnt" name="class" value="hnt">
+    <label for="hnt">hnt</label><br>
+    <input type="radio" id="pri" name="class" value="pri">
+    <label for="pri">pri</label><br>
+    <input type="radio" id="rog" name="class" value="rog">
+    <label for="rog">rog</label><br>
+    <input type="submit" value="Submit">
+</form>
 {% endblock content %}
