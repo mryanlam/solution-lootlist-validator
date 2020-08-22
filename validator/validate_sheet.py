@@ -86,7 +86,10 @@ def _validate_bracket(class_list: List[str], loot_list: Dict[int, Tuple], bracke
             for item in loot_list[k]:
                 if not item:
                     continue
-                item_attr = db.get_item_by_name(item)
+                try:
+                    item_attr = db.get_item_by_name(item)
+                except Exception as e:
+                    raise ValueError("Invalid item {} causes {}".format(item, e))
                 allocation_sum += item_attr["allocation"]
                 type_count[item_attr["item_type"]] = type_count.get(item_attr["item_type"], 0) + 1
                 found = False
@@ -117,7 +120,10 @@ def _validate_non_bracket(class_list: List[str], loot_list: Dict[int, Tuple], br
             for item in loot_list[k]:
                 if not item:
                     continue
-                item_attr = db.get_item_by_name(item)
+                try:
+                    item_attr = db.get_item_by_name(item)
+                except Exception as e:
+                    raise ValueError("Invalid item {} causes {}".format(item, e))
                 found = False
                 for c in class_list:
                     if c in item_attr["first_prio"].lower() or 'all' in item_attr["first_prio"].lower():
@@ -134,4 +140,5 @@ def _validate_non_bracket(class_list: List[str], loot_list: Dict[int, Tuple], br
     return (valid, info)
 
 if __name__ == '__main__':
-    validate_sheet("tnk", "https://docs.google.com/spreadsheets/d/1ZnGUeif6qvAT9IjgI5QdtCh0lTIuweWaXGeCjVQcF7M/edit?usp=sharing")
+    # validate_sheet("tnk", "https://docs.google.com/spreadsheets/d/1ZnGUeif6qvAT9IjgI5QdtCh0lTIuweWaXGeCjVQcF7M/edit?usp=sharing")
+    validate_sheet("wlk", "https://docs.google.com/spreadsheets/d/1G29l-pmDxmR-DslJEh2ODdtrKVNWu2ZijkM2LOiJURM/edit#gid=0")
