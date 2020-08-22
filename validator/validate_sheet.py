@@ -11,10 +11,12 @@ MAX_DUPLICATE_ITEM_TYPE = 1
 VALID_SPEC = ["tnk", "war", "ret", "pal", "frl", "dru", "mag","wlk","hnt", "pri", "rog", "all"]
 
 def validate_sheet(c: str, uri: str) -> Dict[str, str]:
-    if not c or not uri:
-        raise ValueError("Invalid Arguments")
+    if not c:
+        raise ValueError("Invalid Argument class set to {}".format(c))
     if c.lower() not in VALID_SPEC:
-        raise ValueError("Invalud Class")
+        raise ValueError("Invalid Class")
+    if not uri:
+        raise ValueError("Invalid Argument lootsheet not found")
     loot_list_dict = _get_sheet(uri)
     # for k, v in loot_list_dict.items():
     #     print("{}| {}".format(k, v))
