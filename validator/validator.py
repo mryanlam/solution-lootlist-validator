@@ -19,7 +19,7 @@ def lootlist(raider: str):
     lootlist = database.list_lootlist(raider)
     return render_template('lootlist.html', lootlist=lootlist)
 
-@app.route("/validate")
+@app.route("/validate",  methods=["GET", "POST"])
 def validate_sheet():
     uri = request.args.get('uri')
     c = request.args.get('class')
