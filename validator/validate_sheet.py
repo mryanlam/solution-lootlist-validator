@@ -91,10 +91,11 @@ def _validate_bracket(class_list: List[str], loot_list: Dict[int, Tuple], bracke
                 type_count[item_attr["item_type"]] = type_count.get(item_attr["item_type"], 0) + 1
                 found = False
                 for c in class_list:
-                    if c in item_attr["first_prio"].lower() or 'any' in item_attr["first_prio"].lower():
+                    if c in item_attr["first_prio"].lower() or 'all' in item_attr["first_prio"].lower():
                         found = True
                 if not found:
                     non_prio_items.append(item)
+                    print(item_attr["first_prio"].lower())
     if allocation_sum > MAX_ALLOCATION:
         valid = False
         info.append("Number of allocation points {} exceeds the max {}".format(allocation_sum, MAX_ALLOCATION))
@@ -119,8 +120,11 @@ def _validate_non_bracket(class_list: List[str], loot_list: Dict[int, Tuple], br
                 item_attr = db.get_item_by_name(item)
                 found = False
                 for c in class_list:
-                    if c in item_attr["first_prio"].lower() or c in item_attr["second_prio".lower()] or 'any' in item_attr["first_prio"].lower() or 'any' in item_attr["second_prio"].lower():
+                    if c in item_attr["first_prio"].lower() or 'all' in item_attr["first_prio"].lower():
                         found = True
+                    if item_attr["second_prio"] is not None:
+                        if c in item_attr["second_prio"].lower() or 'all' in item_attr["second_prio"].lower():
+                            found = True
                 if not found:
                     non_prio_items.append(item)
     
@@ -130,4 +134,4 @@ def _validate_non_bracket(class_list: List[str], loot_list: Dict[int, Tuple], br
     return (valid, info)
 
 if __name__ == '__main__':
-    validate_sheet("https://docs.google.com/spreadsheets/d/1ZnGUeif6qvAT9IjgI5QdtCh0lTIuweWaXGeCjVQcF7M/edit?usp=sharing")
+    validate_sheet("tnk", "https://docs.google.com/spreadsheets/d/1ZnGUeif6qvAT9IjgI5QdtCh0lTIuweWaXGeCjVQcF7M/edit?usp=sharing")
