@@ -55,9 +55,10 @@ def _get_sheet(uri: str) -> Dict[int, Tuple]:
 def _validate_sheet(c: str, loot_list: Dict[int, Tuple]) -> Tuple[bool, Dict]:
     colored_brackets = [[50, 49, 48], [47, 46, 45], [44, 43, 42], [41, 40, 39]]
     other_brackets = [x for x in range(1, 39)]
-    special_class_map = {   "tnk": ["tnk", "war"], 
-                    "ret": ["ret", "pal"], 
-                    "frl": ["frl", "dru"]}
+    special_class_map = {   "tnk": ["tnk", "war"],
+                            "war": ["war", "fur"], 
+                            "ret": ["ret", "pal"], 
+                            "frl": ["frl", "dru"]}
     db = SolutionLootDB()
     overall_valid = True
     info_dict = dict()
